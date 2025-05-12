@@ -2,11 +2,9 @@ package com.crudsec.app_security_app.infrastructure.repositories.product;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.crudsec.app_security_app.application.services.IProductService;
 import com.crudsec.app_security_app.domain.entity.Product;
 
@@ -40,12 +38,10 @@ public class ProductAdapter implements IProductService {
         Optional<Product> productOptional = repository.findById(id);
         if (productOptional.isPresent()) {
             Product productDb = productOptional.orElseThrow();
-            
             productDb.setName(product.getName());
             productDb.setDescription(product.getDescription());
             productDb.setPrice(product.getPrice());
-            return Optional.of(repository.save(productDb));
-            
+            return Optional.of(repository.save(productDb));  
         }
         return productOptional;
     }
